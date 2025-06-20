@@ -4,23 +4,67 @@
   <meta charset="UTF-8">
   <title>Steveo's Backing Tracks</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f8f8f8; }
-    h1 { text-align: center; }
-    .playlist { max-width: 600px; margin: 0 auto; }
-    .track { margin: 10px 0; }
-    button { margin-left: 10px; }
-    #waveform { width: 100%; height: 128px; margin-top: 20px; background: #eee; border-radius: 4px; }
-    #playPauseBtn { margin-top: 10px; padding: 10px 20px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      background: #101418; /* dark bg */
+      color: #E0E0E0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4FC387;
+    }
+
+    .playlist {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .track {
+      margin: 10px 0;
+    }
+
+    button {
+      margin-left: 10px;
+      background-color: #5EB1D8;
+      color: #101418;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #4FC387;
+      color: #000;
+    }
+
+    #waveform {
+      width: 100%;
+      height: 128px;
+      margin-top: 20px;
+      background: #1C1F22;
+      border-radius: 4px;
+    }
+
+    #playPauseBtn {
+      margin-top: 10px;
+      padding: 10px 20px;
+    }
   </style>
 
   <!-- Wavesurfer.js from CDN -->
   <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <body>
-  <h1>Steveo's Backing Tracks</h1>
+  <h1>Backing Tracks</h1>
 
+  <!-- Playlist -->
   <div class="playlist" id="playlist"></div>
 
+  <!-- Waveform + Controls -->
   <div id="waveform"></div>
   <div style="text-align: center;">
     <button id="playPauseBtn">Play</button>
@@ -42,19 +86,17 @@
       }
     ];
 
-    // Bar-style waveform setup
-const wave = WaveSurfer.create({
-  container: '#waveform',
-  waveColor: '#5EB1D8',              // soft blue (left S)
-  progressColor: '#4FC387',          // green (rest of logo)
-  cursorColor: '#ffffff',
-  barWidth: 2,
-  barGap: 1,
-  barRadius: 2,
-  height: 128,
-  responsive: true
-});
-
+    const wave = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: '#5EB1D8',
+      progressColor: '#4FC387',
+      cursorColor: '#ffffff',
+      barWidth: 2,
+      barGap: 1,
+      barRadius: 2,
+      height: 128,
+      responsive: true
+    });
 
     const playPauseBtn = document.getElementById("playPauseBtn");
     const playlist = document.getElementById("playlist");
@@ -83,9 +125,9 @@ const wave = WaveSurfer.create({
       playlist.appendChild(div);
     });
 
-    // Optional: autoplay when user interacts
+    // Optional: load first track on interaction
     wave.once('interaction', () => {
-      // wave.play(); // enable if you want it to auto-play on first load
+      // wave.play(); // Enable if you want auto-play
     });
   </script>
 </body>
