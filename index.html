@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steveo's Backing Tracks</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f8f8f8; }
+    h1 { text-align: center; }
+    .playlist { max-width: 600px; margin: 0 auto; }
+    .track { margin: 10px 0; }
+    button { margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Steveo's Backing Tracks</h1>
+  <div class="playlist" id="playlist"></div>
+  <audio id="audioPlayer" controls style="width:100%; margin-top:20px;"></audio>
+
+  <script>
+    const tracks = [
+      {
+        title: "Bark at the Moon - Backing Track",
+        url: "https://drive.google.com/uc?export=download&id=1W0kMY-UTuoutj8uBmglJ5YKVPQZAL-XJ"
+      },
+      {
+        title: "Holy Wars - Backing Track",
+        url: "https://drive.google.com/uc?export=download&id=1PWuNckgZZtfwuQluX7pGAEtu2OSht8P-"
+      },
+      {
+        title: "The Trooper - Backing Track",
+        url: "https://drive.google.com/uc?export=download&id=1bDvSYn9Wp5XSEuPY2z7QQT_t5jz6P1oe"
+      }
+    ];
+
+    const player = document.getElementById("audioPlayer");
+    const playlist = document.getElementById("playlist");
+
+    tracks.forEach((track, index) => {
+      const div = document.createElement("div");
+      div.classList.add("track");
+
+      const title = document.createElement("span");
+      title.textContent = track.title;
+
+      const playBtn = document.createElement("button");
+      playBtn.textContent = "Play";
+      playBtn.onclick = () => {
+        player.src = track.url;
+        player.play();
+      };
+
+      div.appendChild(title);
+      div.appendChild(playBtn);
+      playlist.appendChild(div);
+    });
+  </script>
+</body>
+</html>
