@@ -43,16 +43,18 @@
     ];
 
     // Bar-style waveform setup
-    const wave = WaveSurfer.create({
-      container: '#waveform',
-      waveColor: '#4B908A',
-      progressColor: 'rgb(100, 0, 100)',
-      barWidth: 2,
-      barGap: 1,
-      barRadius: 2,
-      height: 128,
-      responsive: true
-    });
+const wave = WaveSurfer.create({
+  container: '#waveform',
+  waveColor: '#5EB1D8',              // soft blue (left S)
+  progressColor: '#4FC387',          // green (rest of logo)
+  cursorColor: '#ffffff',
+  barWidth: 2,
+  barGap: 1,
+  barRadius: 2,
+  height: 128,
+  responsive: true
+});
+
 
     const playPauseBtn = document.getElementById("playPauseBtn");
     const playlist = document.getElementById("playlist");
